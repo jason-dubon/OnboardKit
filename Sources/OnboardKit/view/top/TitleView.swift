@@ -13,7 +13,7 @@ class TitleView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "ArialRoundedMTBold", size: 28)
+        label.font = .systemFont(ofSize: 32, weight: .light)
         label.minimumScaleFactor = 0.5
         label.numberOfLines = 2
         label.textAlignment = .center

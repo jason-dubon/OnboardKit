@@ -64,7 +64,7 @@ class ViewController: UIViewController {
       self.onboardKit = OnboardKit(
         slides: [
           .init(image: UIImage(named: "image1")!,
-                title: "Personalised offers at 40,000+ places"),
+                title: "The future "),
           .init(image: UIImage(named: "image2")!,
                 title: "Stack your rewards every time you pay"),
           .init(image: UIImage(named: "image3")!,
@@ -86,6 +86,8 @@ extension ViewController: OnboardKitDelegate {
   func getStartedButtonDidTap() {
     onboardKit?.dismissOnboarding()
     onboardKit = nil
+    
+    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc: MainViewController())
   }
   
 }
@@ -113,7 +115,7 @@ class MainViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .gray
+    view.backgroundColor = .systemYellow
   }
   
 }

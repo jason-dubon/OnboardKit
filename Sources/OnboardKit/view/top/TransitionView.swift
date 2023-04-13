@@ -90,7 +90,7 @@ class TransitionView: UIView {
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            imageView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.7),
+            imageView.heightAnchor.constraint(equalTo: mainStackView.heightAnchor, multiplier: 0.8),
             
         ])
     }
