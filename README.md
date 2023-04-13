@@ -71,7 +71,6 @@ class ViewController: UIViewController {
                 title: "Enjoy now, FavePay Later"),
         ],
         tintColor: UIColor(red: 220/255, green: 20/255, blue: 60/255, alpha: 1.0),
-        themeFont: UIFont(name: "American Typewriter Bold", size: 28) ?? .systemFont(ofSize: 28, weight: .bold))
       self.onboardKit?.delegate = self
       self.onboardKit?.launchOnboarding(rootVC: self)
     }
