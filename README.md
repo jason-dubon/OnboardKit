@@ -47,10 +47,9 @@ If you prefer not to use Swift Package Manager, you can integrate OnboardKit int
 
 ---
 
-## Usage
+## Quick Start
 
-### Quick Start
-
+## 1. Implement this in ViewController
 ```swift
 import UIKit
 import OnboardKit
@@ -96,9 +95,10 @@ extension ViewController: OnboardKitDelegate {
   
 }
 
-# In SceneDelegate implement this function to transistion VC's
+```
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+# 2. In SceneDelegate implement this function to transistion ViewControllers
+```swift
 
 func changeRootViewController(vc: UIViewController) {
     guard let window = window else {
@@ -109,7 +109,11 @@ func changeRootViewController(vc: UIViewController) {
     UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
 }
 
+```
 
+
+3. The ViewController you want to transition to after onboarding
+``` swift
 class MainViewController: UIViewController {
   
   override func viewDidLoad() {
