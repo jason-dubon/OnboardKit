@@ -94,30 +94,21 @@ extension ViewController: OnboardKitDelegate {
     transit(viewController: MainViewController())
   }
   
-  private func transit(viewController: UIViewController) {
-    let foregroundScenes = UIApplication.shared.connectedScenes.filter({
-      $0.activationState == .foregroundActive
-    })
-    
-    let window = foregroundScenes
-      .map({ $0 as? UIWindowScene })
-      .compactMap({ $0 })
-      .first?
-      .windows
-      .filter({ $0.isKeyWindow })
-      .first
-    
-    guard let uWindow = window else { return }
-    uWindow.rootViewController = viewController
-    
-    UIView.transition(
-      with: uWindow,
-      duration: 0.3,
-      options: [.transitionCrossDissolve],
-      animations: nil,
-      completion: nil)
-  }
 }
+
+# In SceneDelegate implement this function to transistion VC's
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+func changeRootViewController(vc: UIViewController) {
+    guard let window = window else {
+        return
+    }
+    
+    window.rootViewController = vc
+    UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+}
+
 
 class MainViewController: UIViewController {
   
