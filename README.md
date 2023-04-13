@@ -92,7 +92,7 @@ extension ViewController: OnboardKitDelegate {
 
 ```
 
-## 2. In SceneDelegate implement this function to transistion ViewControllers
+## 2. In SceneDelegate, implement this function to transistion ViewControllers
 ```swift
 
 func changeRootViewController(vc: UIViewController) {
@@ -107,7 +107,7 @@ func changeRootViewController(vc: UIViewController) {
 ```
 
 
-## 3. The ViewController you want to transition to after onboarding
+## 3. ViewController to transition to after onboarding
 ``` swift
 class MainViewController: UIViewController {
   
