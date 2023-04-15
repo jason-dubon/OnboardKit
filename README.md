@@ -8,7 +8,7 @@
 
 # OnboardKit
 
-OnboardKit is a Swift library that provides simple and easy onboarding flow for your iOS apps.
+OnboardKit is a Swift library that provides simple and easy onboarding and sign in flow for your iOS apps. 
 
 ## Contents
 
@@ -55,41 +55,50 @@ import UIKit
 import OnboardKit
 
 class ViewController: UIViewController {
-  
-  private var onboardKit: OnboardKit?
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    DispatchQueue.main.async {
-      self.onboardKit = OnboardKit(
-        slides: [
-          .init(image: UIImage(named: "image1")!,
-                title: "The future "),
-          .init(image: UIImage(named: "image2")!,
-                title: "Stack your rewards every time you pay"),
-          .init(image: UIImage(named: "image3")!,
-                title: "Enjoy now, FavePay Later"),
-        ],
-        tintColor: UIColor(red: 220/255, green: 20/255, blue: 60/255, alpha: 1.0),
-      self.onboardKit?.delegate = self
-      self.onboardKit?.launchOnboarding(rootVC: self)
-    }
-  }
-}
-
-extension ViewController: OnboardKitDelegate {
-  func nextButtonDidTap(index: Int) {
-    print("next button is tapped at index: \(index)")
-  }
-  
-  func getStartedButtonDidTap() {
-    onboardKit?.dismissOnboarding()
-    onboardKit = nil
+    // optional so we can deinit after onboarding
+    private var onboardingKit: OnboardKit?
     
-    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc: MainViewController())
-  }
-  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let slides = [
+            Slide(image: UIImage(named: "image1")!, title: "InfraslimX"),
+            Slide(image: UIImage(named: "image2")!, title: "The future of fitness is here"),
+            Slide(image: UIImage(named: "image3")!, title: "Try it now!")
+        ]
+        
+        self.onboardingKit = OnboardKit(onboardSlides: slides, onboardTintColor: .init(red: 1, green: 215/255, blue: 0, alpha: 1), signInPage: SignInPage(image: UIImage(named: "jason")!, title: "Sign In To Continue!"))
+        self.onboardingKit?.launchOnboardingWithSignIn(rootVC: self)
+        self.onboardingKit?.onboardDelegate = self
+        self.onboardingKit?.signInDelegate = self
+    }
 }
+
+extension ViewController: OnboardKitDelegate, OnboardKitSignInDelegate {
+       
+    func nextButtonDidTap(index: Int) {
+        print(index)
+    }
+    
+    func getStartedButtonDidTap() {
+        print("get started")
+    }
+    
+    func didTapSignInApple() {
+        print("apple")
+    }
+    
+    func didTapSignInGoogle() {
+        print("google")
+    }
+}
+
 
 ```
 
@@ -107,19 +116,6 @@ func changeRootViewController(vc: UIViewController) {
 
 ```
 
-
-## 3. ViewController to transition to after onboarding
-``` swift
-class MainViewController: UIViewController {
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = .systemYellow
-  }
-  
-}
-
-```
 
 ## Credits
 
