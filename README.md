@@ -48,7 +48,14 @@ dependencies: [
 If you prefer not to use Swift Package Manager, you can integrate OnboardKit into your project manually.
 
 ---
+## Features
+We now support multiple features
 
+### 1. Onboarding & Sign In
+### 2. Onboarding
+### 3. Sign In
+
+--
 ## Quick Start
 
 ## 1. Implement this in ViewController
