@@ -10,7 +10,7 @@
 
 OnboardKit is a Swift library that provides simple and easy onboarding and sign in flow for your iOS apps. 
 
-https://github.com/MexJason/OnboardKit/blob/main/assets/onboardkit-video.gif
+![preview](https://github.com/MexJason/OnboardKit/blob/main/assets/onboardkit-video.gif)
 
 ## Contents
 
